@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+  <title>TkTextPlus - A Modified Tk Text Widget</title>
+
+
+</head>
+
+
+<body>
+
+<h1>TkTextPlus</h1>
+
+<h2>What is TkTextPlus?</h2>
+
+TkTextPlus&nbsp;is&nbsp;an extended&nbsp;Tk Text widget
+with features
+suitable
+for source-code displaying and editing. Features include displaying
+line numbers, syntax highlighting, code folding and linemarkers.<br>
+
+<br>
+
+<div style="text-align: center;"><img style="width: 753px; height: 436px;" alt="Picture of the demo." src="demo.png"><br>
+
+</div>
+
+<h2>Development Status</h2>
+
+TkTextPlus is in the early stages of development. The underlying Tk 8.5
+text
+widget itself still has some issues which make it not ready for daily
+use (issues with -startline and -endline). This webpage serves as the
+only (partial) documentation of the API, which is subject to change.<br>
+
+<h2>New Widget Options</h2>
+
+-edgecolumn<br>
+
+-linenumbers<br>
+
+-showeol<br>
+
+-showtabs<br>
+
+-tabwidth<br>
+
+-whitespaceforeground<br>
+
+<h2>New Widget Commands</h2>
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">identify</span> <span style="font-style: italic;">x y</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">linefoldable</span> <span style="font-style: italic;">index</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">linefolded</span> <span style="font-style: italic;">index ?boolean?</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">linefoldhighlight</span> <span style="font-style: italic;">?index?</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">linefoldlevel</span> <span style="font-style: italic;">index</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">linevisible</span> <span style="font-style: italic;">index ?boolean?</span><br style="font-style: italic;">
+
+<span style="font-style: italic;">pathName </span><span style="font-weight: bold;">togglecontraction</span> <span style="font-style: italic;">index</span><br>
+
+<h2>Margins</h2>
+
+A TkTextPlus widget can display up to 6 margins on the left and right
+sides
+of
+the window. One margin is for displaying line numbers, one for
+code-folding indicators, and the remaining 4 margins are for displaying
+linemarkers. The margins are predefined (you can't create new ones) and
+are named <span style="font-weight: bold;">number</span>,
+<span style="font-weight: bold;">fold</span>, <span style="font-weight: bold;">marker1</span>, <span style="font-weight: bold;">marker2</span>, <span style="font-weight: bold;">marker3</span> and <span style="font-weight: bold;">marker4</span> respectively.<br>
+
+<br>
+
+-activebackground<br>
+
+-activeforeground<br>
+
+-activeline<br>
+
+-background<br>
+
+-foreground<br>
+
+-justify<br>
+
+-leftedge<br>
+
+-padx<br>
+
+-rightedge<br>
+
+-side<br>
+
+-visible<br>
+
+-width<br>
+
+<br>
+
+<span style="font-style: italic;">pathName</span>
+<span style="font-weight: bold;">margin cget</span> <span style="font-style: italic;">name option</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">margin configure</span> <span style="font-style: italic;">name ?option? ?value? ?option
+value ...?</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">margin names</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">margin order</span> <span style="font-style: italic;">?list?</span><br>
+
+<h2>Line Markers</h2>
+
+A linemarker is a graphical or textual annotation to a line. Each line
+of text may have up to 4 linemarkers associated with it, one in each of
+the 4 margins used for displaying linemarkers. A linemarker could be
+used to display an icon representing a debugger breakpoint in a source
+file for example.<br>
+
+<br>
+
+-bitmap<br>
+
+-image<br>
+
+-text<br>
+
+<br>
+
+<span style="font-style: italic;">pathName</span>
+<span style="font-weight: bold;">linemarker cget</span>
+<span style="font-style: italic;">name option</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">linemarker configure</span>
+<span style="font-style: italic;">margin ?option? ?value?
+?option value ...?</span><br>
+
+<span style="font-style: italic;"></span><span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">linemarker create</span> <span style="font-style: italic;">name ?option value ...?</span><br>
+
+<span style="font-style: italic;">pathName</span>&nbsp;<span style="font-weight: bold;">linemarker delete</span> <span style="font-style: italic;">name</span><br>
+
+<span style="font-style: italic;">pathName</span>&nbsp;<span style="font-weight: bold;">linemarker names</span><br>
+
+<span style="font-style: italic;">pathName</span>&nbsp;<span style="font-weight: bold;">linemarker set</span> <span style="font-style: italic;">line ?margin? ?name?</span>
+<h2>Lexers</h2>
+
+A lexer is used to scan the text being displayed and allows
+language-specific syntax highlighting and folding. A lexer may for
+example identify comments, keywords, operators and strings and
+associate style information with the relevant pieces of text. The
+appearance of the different styles is controlled using the familar text
+widget tags, allowing you to specify the foreground and background
+colors, font etc of each style individually using the <span style="font-weight: bold;">tag configure</span>
+command.&nbsp;<br>
+
+<br>
+
+Currently there are 6 lexers provided, named <span style="font-weight: bold;">bash</span>, <span style="font-weight: bold;">cpp</span>, <span style="font-weight: bold;">lua</span>, <span style="font-weight: bold;">makefile</span>, <span style="font-weight: bold;">python</span> and <span style="font-weight: bold;">tcl</span>. The lexing
+logic (and code ;-} )&nbsp; is based on&nbsp;the popular <a href="http://www.scintilla.org">Scintilla</a> editing
+component. It should be fairly easy to add new languages but there is
+no stable API for doing so.<br>
+
+<br>
+
+Once a lexer is assigned to a text widget (using the <span style="font-weight: bold;">lexer set</span> command)
+the lexer will spring into action whenever text is inserted or deleted.
+The <span style="font-weight: bold;">lexer invoke</span>
+command is provided to test the performace of the lexer.&nbsp;On my
+machine for example<span style="font-weight: bold;"> lexer
+invoke</span> takes ~54000 microseconds with the <span style="font-weight: bold;">cpp</span> lexer to parse
+all 9760 lines of tkTextDisp.c.<br>
+
+<br>
+
+-bracestyle<br>
+
+-enable<br>
+
+<br>
+
+<span style="font-style: italic;">pathName</span>
+<span style="font-weight: bold;">lexer bracematch</span>
+<span style="font-style: italic;">index</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer cget</span> <span style="font-style: italic;">name option</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer configure</span>&nbsp;<span style="font-style: italic;">?option? ?value? ?option value
+...?<br>
+
+pathName</span> <span style="font-weight: bold;">lexer
+invoke</span> <span style="font-style: italic;">?start?
+end?</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer keywords</span> <span style="font-style: italic;">index ?list?</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer names</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer set</span> <span style="font-style: italic;">?name?</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer styleat</span> <span style="font-style: italic;">index</span><br>
+
+<span style="font-style: italic;">pathName</span> <span style="font-weight: bold;">lexer&nbsp;stylenames</span>
+<h3>Lexers &amp; Tags<br>
+
+</h3>
+
+When a lexer is assigned with the <span style="font-weight: bold;">lexer
+set</span>
+command, one tag is created for each of the predefined lexer styles.
+The tag names are the same as the lexer style names as returned by the <span style="font-weight: bold;">lexer stylenames</span>
+command. Rather than applying tags using the <span style="font-weight: bold;">tag add</span> command, a
+lexer records a byte of style information with each byte of text. This
+method results in a considerable performance
+gain and memory savings over the tags being applied in the usual
+manner; it also limits the number of possible lexer styles to 255, but
+that
+shouldn't be a concern.<br>
+
+<br>
+
+You can still add any number of other tags using <span style="font-weight: bold;">tag add</span>. The <span style="font-weight: bold;">tag names</span>
+command will return the names of any tags including those created by a
+lexer. Furthermore, bindings on lexer tags will work. However, the <span style="font-weight: bold;">tag ranges</span> command
+will <span style="font-style: italic;">not</span>
+return the names of tags a lexer itself has applied to the text.<br>
+
+<br>
+
+Tags created by a lexer may not be deleted using <span style="font-weight: bold;">tag delete</span>; attempts
+to do so are silently ignored.
+<h2>License</h2>
+
+TkTextPlus is available under the standard Tcl license. Parts of it are
+distributed with the following additional copyright (from&nbsp;<a href="http://www.scintilla.org/">Scintilla</a>):<br>
+
+<pre style="margin-left: 40px;">Copyright 1998-2003 by Neil Hodgson &lt;neilh@scintilla.org&gt;</pre>
+
+<pre style="margin-left: 40px;">All Rights Reserved <br><br>Permission to use, copy, modify, and distribute this software and its <br>documentation for any purpose and without fee is hereby granted, <br>provided that the above copyright notice appear in all copies and that <br>both that copyright notice and this permission notice appear in <br>supporting documentation."</pre>
+
+<h2>Download</h2>
+
+<a href="https://sourceforge.net/projects/tktextplus/">
+https://sourceforge.net/projects/tktextplus/</a><br>
+
+<a href="https://sourceforge.net/project/showfiles.php?group_id=188485">
+https://sourceforge.net/project/showfiles.php?group_id=188485</a><br>
+
+<br>
+
+<div style="text-align: center;"><a href="http://sourceforge.net"><img src="http://sflogo.sourceforge.net/sflogo.php?group_id=188485&amp;type=5" alt="SourceForge.net Logo" border="0" height="62" width="210"></a><br>
+
+Last modified February 8
+2007</div>
+
+</body>
+</html>

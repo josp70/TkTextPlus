@@ -1,0 +1,11 @@
+package require Tk
+
+package ifneeded @PACKAGE_NAME@ @PACKAGE_PATCHLEVEL@ [string map [list %d $dir] {
+    if {![info exists ::env(TEXTPLUS_LIBRARY)]
+	&& [file exists [file join {%d} textplus.tcl]]} {
+	set ::textplus_library {%d}
+	# this is done in tkText.c using tcl_findLibrary
+	#source [file join {%d} textplus.tcl]
+	load [file join {%d} $<TARGET_FILE_NAME:@PACKAGE_NAME@>] @PACKAGE_NAME@
+    }
+}]
