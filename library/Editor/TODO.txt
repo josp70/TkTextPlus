@@ -1,0 +1,25 @@
+Urgent --
+
+General --
+
+- OK -- new, set default language 
+- OK -- open: what if it is already open? just rise the already opened. 
+- OK -- reload: ask if there are recent changes
+
+- OK -- save: what if it was modified by an external program? ask
+  before. Should save the mtime in BufferInfo
+
+- OK -- saveas, check if language has changed
+- OK -- undo + image: enabled only when there is something to undo
+- OK -- redo + image: enabled only when there is something to redo
+- OK -- cut + image: enabled only when there is something to cut
+- OK -- copy + image: enabled only when there is something to copy
+- OK -- paste + image: : enabled only when there is something to paste
+- OK -- font (family + size)
+- OK -- close
+- OK -- * modified
+- OK open dialog: if filetype is empty use the filetype of the last opened file.
+
+Others
+
+- export pdf

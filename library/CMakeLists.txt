@@ -8,4 +8,7 @@ file(GENERATE
   INPUT  "${CMAKE_CURRENT_BINARY_DIR}/pkgIndex.tcl.in")
 
 install(FILES "${CMAKE_CURRENT_BINARY_DIR}/pkgIndex.tcl" "textplus.tcl"
-  COMPONENT RUNTIME DESTINATION ${DEST_DIR})
+  COMPONENT RUNTIME DESTINATION "${DEST_DIR}")
+
+add_subdirectory(Editor)
+add_subdirectory(Icons)

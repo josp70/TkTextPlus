@@ -1,0 +1,2 @@
+install(FILES "pkgIndex.tcl" "textplus.tcl"
+  COMPONENT RUNTIME DESTINATION ${DEST_DIR})

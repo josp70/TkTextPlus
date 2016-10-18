@@ -1,0 +1,5 @@
+install(FILES "Icons.tcl" "pkgIndex.tcl"
+  COMPONENT RUNTIME DESTINATION ${DEST_DIR}/Icons)
+
+install(DIRECTORY "Images"
+  COMPONENT RUNTIME DESTINATION ${DEST_DIR}/Icons)

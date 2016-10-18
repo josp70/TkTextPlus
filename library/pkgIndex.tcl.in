@@ -9,3 +9,12 @@ package ifneeded @PACKAGE_NAME@ @PACKAGE_PATCHLEVEL@ [string map [list %d $dir] 
 	load [file join {%d} $<TARGET_FILE_NAME:@PACKAGE_NAME@>] @PACKAGE_NAME@
     }
 }]
+
+set ___ $dir
+set dir [file join $___ "Editor"]
+source [file join $dir "pkgIndex.tcl"]
+
+set dir [file join $___ "Icons"]
+source [file join $dir "pkgIndex.tcl"]
+set dir $___
+unset ___
